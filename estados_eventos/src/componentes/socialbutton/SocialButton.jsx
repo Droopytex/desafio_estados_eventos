@@ -24,7 +24,7 @@ const SocialButton = ({ social }) => {
         icon={icon}
         style={{ color: "#000000" }}
         size="2x"
-        className="mx-2 "
+        className="mx-2"
       />
     </>
   );

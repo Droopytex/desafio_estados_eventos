@@ -11,10 +11,10 @@ function Registro() {
   return (
     <>
       <h1>Crea una cuenta</h1>
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center m-2">
+        <SocialButton social="facebook" />
         <SocialButton social="github" />
         <SocialButton social="linkedin" />
-        <SocialButton social="facebook" />
       </div>
       <p>o usa un mail para registrarse</p>
       <Formulario />
