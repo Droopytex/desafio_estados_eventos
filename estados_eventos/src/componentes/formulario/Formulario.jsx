@@ -41,44 +41,42 @@ const Formulario = () => {
         {error ? (
           <p className="error">Todos los campos son obligatorios</p>
         ) : null}
+
         <div className="form-group my-2">
           <input
             placeholder="Ingrese nombre"
             type="text"
             name="nombre"
-            className="form-control"
+            className="form-control my-2"
             onChange={(e) => setNombre(e.target.value)}
             value={nombre}
           />
-        </div>
-        <div className="form-group my-2">
+
           <input
             placeholder="Ingrese E-mail"
             type="text"
             name="email"
-            className={`form-control ${emailError ? "error" : ""}`}
+            className={`my-2 form-control ${emailError ? "error" : ""}`}
             onChange={manejoEmail}
             value={email}
           />
           {emailError && <p className="error">Formato de mail incorrecto</p>}
           {/* Mostramos el mensaje de error si el email es inválido */}
-        </div>
-        <div className="form-group my-2">
+
           <input
             placeholder="Ingrese contraseña"
             type="password"
             name="pasword"
-            className="form-control"
+            className="form-control my-2"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
-        </div>
-        <div className="form-group my-2">
-          <input
+
+          <input 
             placeholder="Confirme contraseña"
             type="password"
             name="confirmar"
-            className="form-control"
+            className="form-control my-2"
             onChange={(e) => setConfirmar(e.target.value)}
             value={confirmar}
           />
