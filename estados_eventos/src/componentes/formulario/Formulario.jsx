@@ -4,11 +4,12 @@ const Formulario = () => {
   //Estados del formulario
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmar, setConfirmar] = useState(false);
+
   //Estado para los errores, se activa cuando están los campos vacíos y se desactiva cuando están completados:
   const [error, setError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
 
   const validarDatos = (e) => {
     //Prevenimos el comportamiento por defecto
@@ -31,6 +32,7 @@ const Formulario = () => {
     setError(false); //elimina el mensaje de error
     setNombre("");
     setEmail("");
+    setPassword("");
     setConfirmar("");
   };
   //Validación de email;
@@ -72,7 +74,7 @@ const Formulario = () => {
           <input
             placeholder="Ingrese contraseña"
             type="password"
-            name="pasword"
+            name="password"
             className="form-control my-2"
             onChange={(e) => setPassword(e.target.value)}
             value={password}

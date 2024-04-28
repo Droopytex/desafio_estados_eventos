@@ -11,7 +11,7 @@ function Registro() {
   return (
     <>
       <h1>Crea una cuenta</h1>
-      <div className="d-flex justify-content-center m-2">
+      <div className="d-flex justify-content-center m-2 ">
         <SocialButton social="facebook" />
         <SocialButton social="github" />
         <SocialButton social="linkedin" />
