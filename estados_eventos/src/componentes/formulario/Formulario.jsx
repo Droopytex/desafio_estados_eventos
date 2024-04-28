@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 const Formulario = () => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
@@ -9,12 +10,13 @@ const Formulario = () => {
   const [error, setError] = useState(false);
 
   const validarDatos = (e) => {
+    //prevenimos el comportamiento por defecto
     e.preventDefault();
 
-    //Validación de los datos;
+    //Validación de los datos/inputs;
     if (nombre === "" || email === "" || password === "" || confirmar === "") {
       setError(true);
-      return;
+      return;  // si existe error, no avanza en la lógica del programa
     }
     if (password !== confirmar) {
       setError(true);
@@ -22,8 +24,8 @@ const Formulario = () => {
       setConfirmar("");
       return;
     }
-    // Si el formulario se envía correctamente devolvemos todos nuestros al inicio se resetea el formulario
-    setError(false);
+    // Si el formulario se envía correctamente devolvemos todos nuestros inputs al inicio, se resetea el formulario
+    setError(false); //elimina el mensaje de error
     setNombre("");
     setEmail("");
     setConfirmar("");
@@ -43,6 +45,7 @@ const Formulario = () => {
         ) : null}
 
         <div className="form-group my-2">
+
           <input
             placeholder="Ingrese nombre"
             type="text"
