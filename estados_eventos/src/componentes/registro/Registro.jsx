@@ -4,6 +4,10 @@ import Formulario from "../formulario/Formulario";
 import SocialButton from "../socialbutton/SocialButton";
 
 function Registro() {
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [datosError, setDatosError] = useState(false);
+
   return (
     <>
       <h1>Crea una cuenta</h1>
@@ -14,7 +18,11 @@ function Registro() {
       </div>
       <p>o usa un mail para registrarse</p>
       <Formulario />
-      <Alert />
+      <Alert
+        emailError={emailError}
+        passwordError={passwordError}
+        datosError={datosError}
+      />
     </>
   );
 }

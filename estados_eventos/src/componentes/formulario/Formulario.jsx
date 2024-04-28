@@ -2,8 +2,9 @@ import { useState } from "react";
 const Formulario = () => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("Contraseña");
-  const [confirmar, setConfirmar] = useState(true);
+  const [emailError, setEmailError] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirmar, setConfirmar] = useState(false);
 
   const [error, setError] = useState(false);
 
@@ -15,11 +16,23 @@ const Formulario = () => {
       setError(true);
       return;
     }
+    if (password !== confirmar) {
+      setError(true);
+      setPassword("");
+      setConfirmar("");
+      return;
+    }
     // Si el formulario se envía correctamente devolvemos todos nuestros al inicio se resetea el formulario
     setError(false);
     setNombre("");
     setEmail("");
     setConfirmar("");
+  };
+  //Validación de email;
+  const manejoEmail = (e) => {
+    const emailRegular = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    setEmail(e.target.value);
+    setEmailError(!emailRegular.test(e.target.value));
   };
 
   return (
@@ -43,10 +56,12 @@ const Formulario = () => {
             placeholder="Ingrese E-mail"
             type="text"
             name="email"
-            className="form-control"
-            onChange={(e) => setEmail(e.target.value)}
+            className={`form-control ${emailError ? "error" : ""}`}
+            onChange={manejoEmail}
             value={email}
           />
+          {emailError && <p className="error">Formato de mail incorrecto</p>}
+          {/* Mostramos el mensaje de error si el email es inválido */}
         </div>
         <div className="form-group my-2">
           <input
