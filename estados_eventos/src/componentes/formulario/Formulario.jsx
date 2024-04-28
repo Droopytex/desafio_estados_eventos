@@ -1,25 +1,28 @@
 import { useState } from "react";
 
 const Formulario = () => {
+  //Estados del formulario
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmar, setConfirmar] = useState(false);
-
+  //Estado para los errores, se activa cuando están los campos vacíos y se desactiva cuando están completados:
   const [error, setError] = useState(false);
 
   const validarDatos = (e) => {
-    //prevenimos el comportamiento por defecto
+    //Prevenimos el comportamiento por defecto
     e.preventDefault();
 
     //Validación de los datos/inputs;
     if (nombre === "" || email === "" || password === "" || confirmar === "") {
       setError(true);
-      return;  // si existe error, no avanza en la lógica del programa
+      return; // si existe error, no avanza en la lógica del programa
     }
     if (password !== confirmar) {
       setError(true);
+      setNombre("");
+      setEmail("");
       setPassword("");
       setConfirmar("");
       return;
@@ -40,18 +43,18 @@ const Formulario = () => {
   return (
     <>
       <form className="formulario" onSubmit={validarDatos}>
+        {/* cuando el formulario se envie se ejecuta función de validar datos */}
         {error ? (
           <p className="error">Todos los campos son obligatorios</p>
         ) : null}
 
         <div className="form-group my-2">
-
           <input
             placeholder="Ingrese nombre"
             type="text"
             name="nombre"
             className="form-control my-2"
-            onChange={(e) => setNombre(e.target.value)}
+            onChange={(e) => setNombre(e.target.value)} //onChange función que detecta cuando se escribe y captura los datos ingresados en el input
             value={nombre}
           />
 
@@ -75,7 +78,7 @@ const Formulario = () => {
             value={password}
           />
 
-          <input 
+          <input
             placeholder="Confirme contraseña"
             type="password"
             name="confirmar"
