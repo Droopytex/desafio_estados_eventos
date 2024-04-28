@@ -1,10 +1,9 @@
 import { useState } from "react";
-import Alert from "../alert/Alert";
 const Formulario = () => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmar, setConfirmar] = useState("");
+  const [password, setPassword] = useState("Contraseña");
+  const [confirmar, setConfirmar] = useState(true);
 
   const [error, setError] = useState(false);
 
@@ -25,10 +24,13 @@ const Formulario = () => {
 
   return (
     <>
-      <from className="formulario" onSubmit={validarDatos}>
-        {error ? <p>Todos los campos son obligatorios</p> : null}
+      <form className="formulario" onSubmit={validarDatos}>
+        {error ? (
+          <p className="error">Todos los campos son obligatorios</p>
+        ) : null}
         <div className="form-group my-2">
           <input
+            placeholder="Ingrese nombre"
             type="text"
             name="nombre"
             className="form-control"
@@ -38,6 +40,7 @@ const Formulario = () => {
         </div>
         <div className="form-group my-2">
           <input
+            placeholder="Ingrese E-mail"
             type="text"
             name="email"
             className="form-control"
@@ -47,7 +50,8 @@ const Formulario = () => {
         </div>
         <div className="form-group my-2">
           <input
-            type="text"
+            placeholder="Ingrese contraseña"
+            type="password"
             name="pasword"
             className="form-control"
             onChange={(e) => setPassword(e.target.value)}
@@ -56,17 +60,19 @@ const Formulario = () => {
         </div>
         <div className="form-group my-2">
           <input
-            type="text"
+            placeholder="Confirme contraseña"
+            type="password"
             name="confirmar"
             className="form-control"
             onChange={(e) => setConfirmar(e.target.value)}
             value={confirmar}
           />
         </div>
-        <button type="submit" className="form-control bg-success my-2">
+
+        <button type="submit" className="bg-success">
           Enviar
         </button>
-      </from>
+      </form>
     </>
   );
 };
